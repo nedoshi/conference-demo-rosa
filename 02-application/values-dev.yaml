@@ -1,0 +1,16 @@
+# Development environment values
+replicas: 2
+environment: development
+
+image:
+  repository: quay.io/flyers22/ecommerce-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi

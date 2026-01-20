@@ -1,0 +1,16 @@
+# Staging environment values
+replicas: 2
+environment: staging
+
+image:
+  repository: quay.io/flyers22/ecommerce-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi

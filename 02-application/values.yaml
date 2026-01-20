@@ -1,0 +1,51 @@
+# Default values for ecommerce-app
+# This is a YAML-formatted file.
+
+replicas: 1
+environment: development
+
+image:
+  repository: quay.io/flyers22/ecommerce-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+route:
+  enabled: true
+  host: ""
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /health
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: 8080
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 3
+  failureThreshold: 3

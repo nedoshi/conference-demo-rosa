@@ -1,0 +1,16 @@
+# Production environment values
+replicas: 3
+environment: production
+
+image:
+  repository: quay.io/flyers22/ecommerce-app
+  tag: latest
+  pullPolicy: Always
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 1Gi
+  requests:
+    cpu: 500m
+    memory: 512Mi

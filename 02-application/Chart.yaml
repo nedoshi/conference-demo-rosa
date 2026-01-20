@@ -1,0 +1,12 @@
+apiVersion: v2
+name: ecommerce-app
+description: E-commerce application Helm chart for ROSA conference demo
+type: application
+version: 0.1.0
+appVersion: "1.0"
+keywords:
+  - ecommerce
+  - rosa
+  - openshift
+maintainers:
+  - name: Demo Team
