@@ -1,0 +1,28 @@
+# VULNERABLE VERSION - For Demo Purposes Only
+# This Dockerfile intentionally uses outdated packages with known CVEs
+
+FROM python:3.8-slim
+
+LABEL name="ecommerce-api-vulnerable" \
+      version="1.0.0-vulnerable" \
+      description="VULNERABLE version for security demo"
+
+WORKDIR /app
+
+# Intentionally using vulnerable package versions
+RUN pip install --no-cache-dir \
+    flask==2.0.0 \
+    requests==2.25.0 \
+    urllib3==1.26.4 \
+    Jinja2==2.11.3 \
+    Werkzeug==2.0.0
+
+COPY app.py .
+
+# Running as root (security issue)
+ENV PORT=8080
+
+EXPOSE 8080
+
+# Using flask dev server (not production ready)
+CMD ["python", "app.py"]
